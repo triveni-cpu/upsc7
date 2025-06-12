@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Current Affairs Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    h2 {
+      color: #444;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      width: 260px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      font-size: 1.1em;
+      color: #0056b3;
+      margin-bottom: 10px;
+    }
+    .card a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Current Affairs Dashboard</h1>
+
+  <h2>📰 Media Sources</h2>
+  <div class="grid" id="media-sources"></div>
+
+  <h2>🏛️ Government Sources</h2>
+  <div class="grid" id="govt-sources"></div>
+
+  <script>
+    const mediaSources = [
+      { name: "The Hindu", url: "https://www.thehindu.com/current-affairs/" },
+      { name: "Times of India", url: "https://timesofindia.indiatimes.com/india" },
+      { name: "Deccan Chronicle", url: "https://www.deccanchronicle.com/news/current-affairs" }
+    ];
+
+    const govtSources = [
+      { name: "Press Information Bureau (PIB)", url: "https://pib.gov.in/ViewRss.aspx" },
+      { name: "PRS Legislative Research", url: "https://prsindia.org/" },
+      { name: "NITI Aayog", url: "https://niti.gov.in/" },
+      { name: "Yojana Magazine", url: "https://yojana.gov.in/" },
+      { name: "Kurukshetra Magazine", url: "https://kurukshetra.gov.in/" }
+    ];
+
+    function createCards(sources, containerId) {
+      const container = document.getElementById(containerId);
+      sources.forEach(source => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<h3>${source.name}</h3><a href="${source.url}" target="_blank">Visit Website</a>`;
+        container.appendChild(card);
+      });
+    }
+
+    createCards(mediaSources, 'media-sources');
+    createCards(govtSources, 'govt-sources');
+  </script>
+
+</body>
+</html>
